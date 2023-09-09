@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>form</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        header {
+            text-align: center;
+            font-size: 20px;
+            margin-top: -20px;
+        }
+
+        nav {
+            margin-left: auto;
+            margin-top: -100px;
+            padding: 80px;
+            font-size: 20px;
+        }
+
+        main {
+            flex-grow: 1;
+            margin-top: -100px;
+            margin-left: 40px;
+        }
+
+        form div {
+            margin-bottom: 4px;
+        }
+
+        input[type="password"] {
+            margin-left: 4px;
+        }
+
+        button {
+            width: 150px;
+            height: 50px;
+            background-color: cornflowerblue;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer
+        }
+
+        table, th, td {
+            border: 1px solid black;
+            text-align: center;
+            margin-top: 100px;
+        }
+
+        footer {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Create an account</h1>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="index2.html" target="_blank">text</a></li>
+            <li><a href="index3.html" target="_blank">media</a></li>
+        </ul>
+    </nav>
+    <main>
+        <form id="registrationForm">
+            <h3>Fill in all fields, then click 'Create an account'</h3>
+            <div>
+                <label>Username</label>
+                <input type="text" id="usernameInput" name="username" placeholder="Enter your username: ">
+            </div>
+            <div>
+                <label>Password</label>
+                <input type="password" name="password" placeholder="Enter your password: ">
+            </div>
+            <div>
+                <label>Sex</label>
+                <input type="radio" name="sex" value="Male"> Male
+                <input type="radio" name="sex" value="Female"> Female
+                <input type="radio" name="sex" value="Yes"> Yes
+            </div>
+            <div>
+                <label>Profile picture</label>
+                <input type="file" name="picture">
+            </div>
+            <div>
+                <label>Age</label>
+                <select id="ageSelect">
+                    <option value="">Select your age</option>
+                </select>
+                <script>
+                    var select = document.getElementById("ageSelect");
+            
+                    for (var i = 3; i <= 100; i++) {
+                        var option = document.createElement("option");
+                        option.value = i;
+                        option.text = i;
+                        select.appendChild(option);
+                    }
+                </script>
+            </div>
+            <div>
+                <label>I confirm that I did not participate in the bombing of Iraq</label>
+                <input type="checkbox">
+            </div>
+            <div>
+                <button type="button" onclick="submitForm()">Create an account</button>
+            </div>
+            <script>
+                function submitForm() {
+                    var username = document.getElementById("usernameInput").value;
+                    var password = document.querySelector('input[name="password"]').value;
+                    var sex = document.querySelector('input[name="sex"]:checked');
+                    var picture = document.querySelector('input[type="file"]')
+                    var age = document.getElementById("ageSelect").value;
+                    var checkbox = document.querySelector('input[type="checkbox"]');
+
+                    if (username === "" || password === "" || !sex || age === "" || !checkbox.checked || picture.files.length === 0) {
+                        alert("Before creating an account, make sure you have filled in all the fields.");} 
+                    else {
+                        document.getElementById("usernameCell").textContent = username;
+                        document.getElementById("sexCell").textContent = sex.value;
+                        document.getElementById("ageCell").textContent = age;
+
+                        document.getElementById("welcomeMessage").style.display = "block";
+                    }
+                }
+            </script>
+        </form>
+        <table>
+            <thead>
+                <tr>
+                    <th>Username</th>
+                    <th>Sex</th>
+                    <th>Age</th>
+                </tr>
+            </thead>
+            <tbody id="tableBody">
+                <tr>
+                    <td id="usernameCell"></td>
+                    <td id="sexCell"></td>
+                    <td id="ageCell"></td>
+                </tr>
+            </tbody>
+        </table>
+        <div id="welcomeMessage" style="position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 24px; text-align: center; color: red; display: none;">Welcome!</div>
+    </main>
+    <footer>
+        <p>Myroslav Ostashchuk</p>
+    </footer>
+</body>
+</html>
