@@ -125,7 +125,7 @@
                     var checkbox = document.querySelector('input[type="checkbox"]');
 
                     if (username === "" || password === "" || !sex || age === "" || !checkbox.checked || picture.files.length === 0) {
-                        alert("Before creating an account, make sure you have filled in all the fields.");} 
+                        alert("Before creating an account, make sure you have filled in all the fields");} 
                     else {
                         document.getElementById("usernameCell").textContent = username;
                         document.getElementById("sexCell").textContent = sex.value;
@@ -152,7 +152,7 @@
                 </tr>
             </tbody>
         </table>
-        <div style="position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 24px; text-align: center; color: red; display: none;">Welcome!</div>
+        <div id="welcomeMessage" style="position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 24px; text-align: center; color: red; display: none;">Welcome!</div>
     </main>
     <footer>
         <p>Myroslav Ostashchuk</p>
